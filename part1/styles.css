@@ -1,0 +1,201 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+  font-size: 14px;
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  background-color: #bbb;
+  font-family: Helvetica, sans-serif;
+  padding-bottom: 100px;
+}
+
+h2,
+h3 {
+  margin: 0 0 0.75em 0;
+}
+
+/* first example */
+.container {
+  max-width: 750px;
+  margin: 20px auto 0 auto;
+  padding: 30px;
+  background-color: #fff;
+}
+
+/*
+First example
+Parent element uses display:flex
+*/
+.form-row {
+  padding: 10px 0;
+  display: flex;
+}
+
+.form-row label {
+  padding-right: 10px;
+}
+/*
+Child element using flex:[number] says all child elements using flex share the horizontal space
+1 is the baseline, and this will take up the rest of the horizontal space because it's the only thing
+in the row using it.
+*/
+.form-row input {
+  flex: 1;
+}
+
+/*
+Second example
+again, parent container display:flex
+*/
+.column-layout {
+  max-width: 1300px;
+  background-color: #fff;
+  margin: 40px auto 0 auto;
+  line-height: 1.65;
+  padding: 20px 50px;
+  display: flex;
+}
+/*
+main column will be 3 times as large as something with flex:1
+order rule determines the order in which things are displayed (for SEO, etc.)
+*/
+
+.main-column {
+  flex: 3;
+  order: 2;
+}
+
+.sidebar-1 {
+  flex: 1;
+  order: 1;
+}
+
+.sidebar-2 {
+  flex: 1;
+  order: 3;
+}
+
+/*
+Third example
+parent display:flex (see @media below)
+*/
+.call-outs-container {
+  max-width: 1400px;
+  margin: 40px auto 0 auto;
+  /*align-items: flex-start aligns by top of div, flex-end by bottom. Leaving these off makes the columns equal heights. Default is "stretch"*/
+  /* align-items: flex-start; */
+  /* align-items: flex-end; */
+}
+
+.call-out {
+  padding: 20px;
+  /*use box-sizing when we specify both padding and width*/
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  /*flexbox uses flex-basis to specify a size (basically the width)*/
+  flex-basis: 30%;
+}
+
+/*only larger screens over 900px wide get the flex, so everything else gets the 3 divs stacked over each other.*/
+@media (min-width: 900px) {
+  .call-outs-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.call-out:nth-child(1) {
+  background-color: #c0dbe2;
+}
+.call-out:nth-child(2) {
+  background-color: #cdf1c3;
+}
+.call-out:nth-child(3) {
+  background-color: #ccb9da;
+}
+
+/* 
+fourth example 
+flex-wrap defaults to nowrap; setting to wrap will allow items to wrap to multiple rows when necessary.
+*/
+.fixed-size-container {
+  max-width: 1400px;
+  margin: 40px auto 0 auto;
+  background-color: #fff;
+  padding: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.fixed-size {
+  width: 150px;
+  height: 100px;
+  background-color: #990b47;
+  color: #fff;
+  line-height: 100px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+/* fifth example
+centering text
+parent uses display:flex, child uses margin auto
+*/
+.banner {
+  height: 400px;
+  max-width: 700px;
+  margin: 40px auto 40px auto;
+  background-color: #2a2a2a;
+  display: flex;
+}
+
+.center-me {
+  color: #fff;
+  font-size: 50px;
+  margin: auto;
+}
+
+/* sixth example - rows and columns
+display:flex on parent as usual
+*/
+.equal-height-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+}
+
+/*first and second are our two columns - we want them equal width, so flex:1 is used*/
+.first {
+  background-color: #fff;
+  padding: 20px;
+  flex: 1;
+}
+
+/*display:flex here too, as it contains two child-elements that will use the full space*/
+.second {
+  background-color: yellow;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.second-a {
+  background-color: #c0dbe2;
+  flex: 1;
+}
+
+.second-b {
+  background-color: #cdf1c3;
+  flex: 1;
+}
